@@ -35,7 +35,7 @@ public class MemoRepository extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    private Memo AddCursorDataToMemo(Cursor cursor) {
+    private Memo addCursorDataToMemo(Cursor cursor) {
         Memo memo = new Memo();
         memo.setId(cursor.getLong(cursor.getColumnIndex("id")));
         memo.setTitle(cursor.getString(cursor.getColumnIndex("title")));
@@ -52,7 +52,7 @@ public class MemoRepository extends SQLiteOpenHelper {
         result.clear();
 
         while (cursor.moveToNext()) {
-            Memo memo = AddCursorDataToMemo(cursor);
+            Memo memo = addCursorDataToMemo(cursor);
 
             result.add(memo);
         }
@@ -66,7 +66,7 @@ public class MemoRepository extends SQLiteOpenHelper {
         Cursor cursor = db.query("memo", null, "id = ?", new String[] { String.valueOf(id) }, null, null, null);
 
         while (cursor.moveToNext()) {
-            Memo memo = AddCursorDataToMemo(cursor);
+            Memo memo = addCursorDataToMemo(cursor);
 
             return memo;
         }
