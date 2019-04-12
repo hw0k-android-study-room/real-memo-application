@@ -63,7 +63,7 @@ public class MemoRepository extends SQLiteOpenHelper {
     public Memo getOne(Long id) {
         SQLiteDatabase db = getReadableDatabase();
 
-        Cursor cursor = db.query("memo", null, "id = ?", new String[] { String.valueOf(id) }, null, null, null);
+        Cursor cursor = db.query("memo", null, "id = ?", String.valueOf(id), null, null, null);
 
         while (cursor.moveToNext()) {
             Memo memo = addCursorDataToMemo(cursor);
@@ -88,13 +88,13 @@ public class MemoRepository extends SQLiteOpenHelper {
     public long delete(Memo memo) {
         SQLiteDatabase db = getWritableDatabase();
 
-        return db.delete("memo", "id = ?", new String[] { String.valueOf(memo.getId()) });
+        return db.delete("memo", "id = ?", String.valueOf(memo.getId()));
     }
 
     public long delete(Long id) {
         SQLiteDatabase db = getWritableDatabase();
 
-        return db.delete("memo", "id = ?", new String[] { String.valueOf(id) });
+        return db.delete("memo", "id = ?", String.valueOf(id));
     }
 
     public long deleteAll() {
@@ -111,6 +111,6 @@ public class MemoRepository extends SQLiteOpenHelper {
         values.put("content", memo.getContent());
         values.put("updated", System.currentTimeMillis());
 
-        return db.update("memo", values, "id = ?", new String[] { String.valueOf(memo.getId()) });
+        return db.update("memo", values, "id = ?", String.valueOf(memo.getId()));
     }
 }
