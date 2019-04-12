@@ -12,7 +12,7 @@ import java.util.List;
 
 public class MemoRepository extends SQLiteOpenHelper {
 
-    List<Memo> result;
+    private List<Memo> result;
 
     public MemoRepository(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
